@@ -67,13 +67,13 @@ publisher.update_version(package_name='com.my.package',
                          version_code=2)  # the apk version code
 ```
 
-## Clearing and uploading image types
+# Clearing and uploading image types
 
 ```ImageType``` defines the type of images group you wish to alter. For example, ```ImageType.ICON``` will target a change in your app's logo.
 
 You can see all of the ```ImageType``` [here](Programming/Python/modules/android/google_play/os_android_google_play_publisher/os_android_play_console_automation/types/ImageType.py).
 
-# Clear Images
+## Clear Images
 
 You can clear a bunch of images by request. 
 
@@ -89,7 +89,7 @@ publisher.clear_images(client_secrets_path='path/to/client_secret.json',  # your
                        language_initials='en-US')  # can be any initials you want (the en-US is the default)
 ```
 
-# Upload Images
+## Upload Images
 
 You can add images (one by one) by request. 
 
