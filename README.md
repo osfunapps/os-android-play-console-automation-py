@@ -71,7 +71,7 @@ publisher.update_version(package_name='com.my.package',
 
 ```ImageType``` defines the type of images group you wish to alter. For example, ```ImageType.ICON``` will target a change in your app's logo.
 
-You can see all of the ```ImageType``` [here](Programming/Python/modules/android/google_play/os_android_google_play_publisher/os_android_play_console_automation/types/ImageType.py).
+You can see all of the ```ImageType``` [here](os_android_play_console_automation/types/ImageType.py).
 
 ## Clear Images
 
