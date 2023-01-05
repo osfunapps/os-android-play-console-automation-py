@@ -40,7 +40,7 @@ def publish_apk(package_name, apk_file_path, client_secrets_path, publish_percen
     if apk_file_path is None:
         raise Exception("Error: apk_file_path is None! If you want to update an already published APK file, call 'update_version()' instead")
     else:
-        _binaries_bp.publish_binary(package_name, client_secrets_path, publish_percents, version_code, app_bundle_path, BinaryType.APK)
+        _binaries_bp.publish_binary(package_name, client_secrets_path, publish_percents, version_code, apk_file_path, BinaryType.APK)
 
 
 def publish_app_bundle(package_name, app_bundle_path, client_secrets_path, publish_percents, version_code):
@@ -74,17 +74,19 @@ def clear_images(client_secrets_path, package_name, image_type: ImageType, langu
     _images_bp.clear_images(client_secrets_path, package_name, image_type, language_initials)
 
 
-def push_image(client_secrets_path, package_name, image_type: ImageType, path_to_image, language_initials='en-US'):
+def push_images(client_secrets_path, package_name, image_type: ImageType, img_list, language_initials='en-US', initials_as_google_translate=False):
     """
-    Will add an image of a certain type to a certain app in a certain langauge
+    Will add a bunch of images of a certain type to a certain app in a certain langauge
 
     Args:
       client_secrets_path: the path to your Google's client secrets json (read on how to obtain at 'os_android_apk_google_play_publisher <https://github.com/osfunapps/os_android_apk_google_play_publisher>')
       package_name: your app's package name
       image_type: the type of the images
       language_initials: the language in which you want to change the images
+      img_list: the list of paths to the images
+      initials_as_google_translate: if the initials are represented by the google translate api, select true. This will turn them to Google Play ones
   """
-    _images_bp.push_image(client_secrets_path, package_name, image_type, path_to_image, language_initials)
+    _images_bp.push_images(client_secrets_path, package_name, image_type, img_list, language_initials, initials_as_google_translate)
 
 
 # a common executor

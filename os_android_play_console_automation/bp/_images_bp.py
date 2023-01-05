@@ -31,18 +31,23 @@ def clear_images(client_secrets_path, package_name, image_type: ImageType, langu
 
 
 # will push an image to the server
-def push_image(client_secrets_path, package_name, image_type: ImageType, path_to_image, language_initials='en-US'):
+def push_images(client_secrets_path, package_name, image_type: ImageType, img_list, language_initials='en-US', initials_as_google_translate=False):
+    initials_to_use = language_initials
+    if initials_as_google_translate:
+        language_initials = _shared_tools.google_translate_to_google_play_initials(language_initials)
     try:
         service = _shared_tools.build_service(client_secrets_path)
         edit_id = _shared_tools.get_edit_id(service, package_name)
 
-        service.edits().images().upload(
-            packageName=package_name,
-            editId=edit_id,
-            language=language_initials,
-            imageType=image_type.value,
-            media_body=path_to_image
-        ).execute()
+        for img_path in img_list:
+            service.edits().images().upload(
+                packageName=package_name,
+                editId=edit_id,
+                language=language_initials,
+                imageType=image_type.value,
+                media_body=img_path
+            ).execute()
+
         print(f'Image for {image_type.value} added for package name "{package_name}" with the language "{language_initials}"')
 
         _shared_tools.commit(service, edit_id, package_name)

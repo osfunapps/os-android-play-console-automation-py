@@ -5,7 +5,7 @@ setup(
     packages=['os_android_play_console_automation',
               'os_android_play_console_automation.types',
               'os_android_play_console_automation.bp'],
-    version='1.00',
+    version='1.03',
     license='MIT',
     description='This module will automate a bunch of Google Play actions like publish apk/app bundle and image handling',  # Give a short description about your library
     author='Oz Shabat',
